@@ -1,19 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto con Teachable Machine</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        color: #333;
+      }
 
-    <title>Historia del objeto</title>
+      header {
+        text-align: center;
+        background-color: #0078d7;
+        color: white;
+        padding: 20px 0;
+      }
 
-    <link rel="stylesheet" type="text/css" href="style.css" />
+      header h1 {
+        margin: 0;
+      }
 
-    <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script>
+      main {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      main h2 {
+        color: #0078d7;
+        margin-bottom: 10px;
+      }
+
+      main p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .camera-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      video {
+        width: 100%;
+        max-width: 600px;
+        border: 2px solid #0078d7;
+        border-radius: 8px;
+      }
+
+      footer {
+        text-align: center;
+        margin: 20px 0;
+        font-size: 0.9rem;
+      }
+
+      footer a {
+        color: #0078d7;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
-
   <body>
-    <script src="sketch.js"></script>
-    <script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
+    <header>
+      <h1>Proyecto Interactivo con Teachable Machine</h1>
+    </header>
+
+    <main>
+      <h2>Descripción del Proyecto</h2>
+      <p>
+        Este proyecto utiliza Teachable Machine y JavaScript para crear una
+        aplicación web interactiva que permite al usuario realizar
+        clasificaciones en tiempo real a través de la cámara de su computador.
+        El objetivo es demostrar de manera práctica y visual cómo las
+        tecnologías de Machine Learning pueden ser aplicadas en tareas del día a
+        día, promoviendo la curiosidad y el aprendizaje en el campo de la
+        inteligencia artificial.
+      </p>
+
+      <div class="camera-container">
+        <video id="webcam" autoplay playsinline></video>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        Creado por Gabriel |
+        <a href="https://teachablemachine.withgoogle.com/" target="_blank"
+          >Explorar Teachable Machine</a
+        >
+      </p>
+    </footer>
+
+    <script>
+      // Obtener acceso a la cámara
+      const videoElement = document.getElementById("webcam");
+
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          videoElement.srcObject = stream;
+        })
+        .catch((error) => {
+          console.error("Error al acceder a la cámara:", error);
+        });
+    </script>
   </body>
 </html>
