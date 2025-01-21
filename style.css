@@ -7,3 +7,38 @@ body {
 canvas {
   display: block;
 }
+/* Resultados */
+.result-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid #e0e0e0;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  margin: 15px 0;
+}
+
+.history-box {
+  font-size: 1.2rem;
+  color: #4a4a4a;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px dashed #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+}
+
+.history-box strong {
+  color: #007acc; /* Resalta los títulos */
+}
+
+.counter {
+  font-size: 1.2rem;
+  color: #006400;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}

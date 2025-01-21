@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/addons/p5.dom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
     <title>Proyecto con Teachable Machine</title>
     <style>
       body {
@@ -12,18 +15,15 @@
         background-color: #f4f4f9;
         color: #333;
       }
-
       header {
         text-align: center;
         background-color: #0078d7;
         color: white;
         padding: 20px 0;
       }
-
       header h1 {
         margin: 0;
       }
-
       main {
         max-width: 800px;
         margin: 20px auto;
@@ -32,52 +32,69 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
       }
-
       main h2 {
         color: #0078d7;
         margin-bottom: 10px;
       }
-
       main p {
         font-size: 1.1rem;
         line-height: 1.6;
       }
-
-      .camera-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-      }
-
-      video {
-        width: 100%;
-        max-width: 600px;
-        border: 2px solid #0078d7;
-        border-radius: 8px;
-      }
-
       footer {
         text-align: center;
         margin: 20px 0;
         font-size: 0.9rem;
       }
-
       footer a {
         color: #0078d7;
         text-decoration: none;
       }
-
       footer a:hover {
         text-decoration: underline;
-      }
+      } 
+       button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #0078d7;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #005bb5;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  button:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  button:focus {
+    outline: none;
+  }
+
+  #reset-btn {
+    background-color: #d9534f;
+  }
+
+  #reset-btn:hover {
+    background-color: #c9302c;
+  }
+
+
     </style>
   </head>
   <body>
     <header>
       <h1>Proyecto Interactivo con Teachable Machine</h1>
     </header>
-
     <main>
       <h2>Descripción del Proyecto</h2>
       <p>
@@ -89,12 +106,25 @@
         día, promoviendo la curiosidad y el aprendizaje en el campo de la
         inteligencia artificial.
       </p>
-
-      <div class="camera-container">
-        <video id="webcam" autoplay playsinline></video>
-      </div>
+      
+        <h2>Interfaz Interactiva</h2>
+        <div id="video-container">
+          <p>Usa la cámara para mostrar un objeto y analiza lo que aparece, por ahora solo puede analizar: Caja de fósforos, Tijera, Moneda, Tarjeta de bus</p>
+          <div id="canvas-container"></div>
+          <button id="analyze-btn">Analizar</button>
+          <button id="reset-btn" style="display: none">
+            Analizar Otro Objeto
+          </button>
+        </div>
+       
+          <div id="results">
+            <p id="detected-object">Esperando análisis...</p>
+            <p id="first-detection"></p>
+        </div>
+        
+        
+      </mai>
     </main>
-
     <footer>
       <p>
         Creado por Gabriel |
@@ -103,19 +133,6 @@
         >
       </p>
     </footer>
-
-    <script>
-      // Obtener acceso a la cámara
-      const videoElement = document.getElementById("webcam");
-
-      navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then((stream) => {
-          videoElement.srcObject = stream;
-        })
-        .catch((error) => {
-          console.error("Error al acceder a la cámara:", error);
-        });
-    </script>
+    <script src="sketch.js"></script>
   </body>
 </html>
